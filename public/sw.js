@@ -27,6 +27,14 @@ if (event.action == "updateName") {
 // periodic sync or widget-related state.
 self.addEventListener('widgetuninstall', (event) => {});
 
+self.addEventListener('push', () => {
+    event.waitUntil(
+      registration.showNotification("Hello!", {
+        body: "This is a push notification!",
+      })
+    );
+  });
+
 const updateWidget = async (event) => {
 // The widget definition represents the fields specified in the manifest.
     const widgetDefinition = event.widget.definition;
